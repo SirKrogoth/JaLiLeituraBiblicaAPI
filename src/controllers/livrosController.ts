@@ -28,12 +28,29 @@ async function create(req: Request, res: Response, next: any){
         res.status(StatusCodes.CREATED).json(result).end();
     } catch (error) {
         console.error(error);        
-        if(error)
+        res.status(StatusCodes.BAD_REQUEST).end();
+    }
+}
+
+async function updateDate(req: Request, res: Response, next: any){
+    try {
+        const livro = req.body as iUsuarioLivro;
+
+        if(livro === null) return res.status(StatusCodes.BAD_REQUEST).end();
+
+        const result = await usuarioRepository.updateDate(livro);
+
+        if(result === null) return res.status(StatusCodes.BAD_REQUEST).end();
+
+        res.status(StatusCodes.OK).end();
+    } catch (error) {
+        console.error(error);        
         res.status(StatusCodes.BAD_REQUEST).end();
     }
 }
 
 export default {
     findAllBooks,
-    create
+    create,
+    updateDate
 }
