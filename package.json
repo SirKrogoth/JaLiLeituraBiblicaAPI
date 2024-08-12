@@ -4,14 +4,15 @@
   "description": "API que irá comunicar-se com a base de dados para gravar os livros que já foram lidos da biblía.",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config ./dist/server",
-    "compile": "npx tsc && ts-node -r dotenv/config ./dist/server",
+    "start": "tsc && ts-node -r dotenv/config -r tsconfig-paths/register ./dist/JaLiLeituraBiblicaAPI/src/server",
+    "compile": "npx tsc && ts-node -r dotenv/config -r  tsconfig-paths/register ./dist/JaLiLeituraBiblicaAPI/src/server",
     "dev": "nodemon -e ts, json --ignore dist --exec \"npm run compile\"",
     "test": "jest"
   },
   "author": "João Rafael Menezes",
   "license": "ISC",
   "devDependencies": {
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.4"
   },
   "dependencies": {

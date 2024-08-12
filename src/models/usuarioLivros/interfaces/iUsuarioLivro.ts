@@ -1,5 +1,5 @@
 export default interface iUsuarioLivro{
     idUsuario: string;
     idLivro: string;
-    dataUltimaLeitura: Date;
+    dataUltimaLeitura: Date | null;
 }
